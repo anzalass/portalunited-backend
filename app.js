@@ -22,23 +22,20 @@ app.use(
     credentials: true,
   })
 );
-const user = require("./user/userController");
+const user = require("./api/user/userController");
 app.use("/api/v2/user", user);
 
-const category = require("./category/categoryController");
+const category = require("./api/category/categoryController");
 app.use("/api/v2/category", category);
 
-const artikel = require("./artikel/artikelController");
+const artikel = require("./api/artikel/artikelController");
 app.use("/api/v2/artikel", artikel);
 
-const saved = require("./saved/savedController");
+const saved = require("./api/saved/savedController");
 app.use("/api/v2/saved", saved);
 
 const comen = require("./api/coment/comenController");
 app.use("/api/v2/comen", comen);
-
-const balesComen = require("./api/balescomen/balesComenController");
-app.use("/api/v2/balescomen", balesComen);
 
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 

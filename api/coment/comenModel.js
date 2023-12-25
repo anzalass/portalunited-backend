@@ -4,7 +4,10 @@ const comenModel = new mongoose.Schema(
   {
     idArtikel: {
       type: String,
-      required: [true, "Artikel not found"],
+    },
+    parentComen: {
+      type: String,
+      default: "null",
     },
     idUser: {
       type: String,

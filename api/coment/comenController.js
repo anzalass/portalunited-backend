@@ -22,23 +22,83 @@ router.post(
         PostComen,
       });
     } catch (error) {
+      res.status(500).json({
+        error: error,
+      });
+    }
+  })
+);
+router.post(
+  "/reply-comen",
+  catchAsyncError(async (req, res, next) => {
+    try {
+      const { idArtikel, namaUser, idUser, isi, parentComen } = req.body;
+      const PostComen = await comenModel.create({
+        idArtikel,
+        namaUser,
+        idUser,
+        isi,
+        parentComen,
+      });
+      res.status(200).json({
+        success: true,
+        message: "Created",
+        PostComen,
+      });
+    } catch (error) {
       return next(new ErrorHandler(error, 500));
     }
   })
 );
 
 router.get(
-  "/get-comen/:idArtikel",
+  "/comen/:idArtikel",
   catchAsyncError(async (req, res, next) => {
     try {
       const getComen = await comenModel.find({
         idArtikel: req.params.idArtikel,
       });
+
+      const commentsWithReply = [];
+
+      for (const comen of getComen) {
+        console.log(comen._id);
+        let reply = await comenModel.find({
+          parentComen: comen._id,
+        });
+        const commentsWithReplies = {
+          ...comen.toObject(),
+          reply: reply,
+        };
+        commentsWithReply.push(commentsWithReplies);
+      }
       res.status(200).json({
-        getComen,
+        commentsWithReply,
       });
     } catch (error) {
-      return next(new ErrorHandler(error, 500));
+      console.log(error);
+      res.status(500).json({
+        error: error,
+      });
+    }
+  })
+);
+router.get(
+  "/reply/:parentId",
+  catchAsyncError(async (req, res, next) => {
+    try {
+      const getComen = await comenModel.find({
+        parentComen: req.params.parentId,
+      });
+
+      res.status(200).json({
+        comment: getComen,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        error: error,
+      });
     }
   })
 );
