@@ -15,7 +15,7 @@ app.use(express.json());
 app.use("/", express.static("uploads"));
 app.use(cookieParser());
 const corsOptions = {
-  origin: https://portalunited.vercel.app'', // Replace with your frontend's origin
+  origin: 'https://portalunited.vercel.app', // Replace with your frontend's origin
   methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH'], // Allow specific HTTP methods
   credentials: true, // Enable credentials (e.g., cookies, HTTP authentication)
   optionsSuccessStatus: 204, // Respond with a 204 No Content status for preflight requests
