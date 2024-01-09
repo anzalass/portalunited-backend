@@ -221,6 +221,19 @@ router.put(
         return next(new ErrorHandler("Author not found", 400));
       }
 
+            if (!title) {
+        res.status(400).json({ message: "Invalid Title" });
+      }
+      if (!isi) {
+        res.status(400).json({ message: "Invalid Isi" });
+      }
+      if (!tags) {
+        res.status(400).json({ message: "Invalid Tags" });
+      }
+      if (!category) {
+        res.status(400).json({ message: "Invalid Category" });
+      }
+
       const updateArtikel = await artikelModel.findByIdAndUpdate(
         id,
         {
