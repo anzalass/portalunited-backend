@@ -19,8 +19,8 @@ process.on("uncaughtExceptions", (err) => {
 connectDatabase();
 
 // create server
-const server = app.listen(process.env.PORT, () => {
-  console.log(`server listening on ${process.env.PORT}`);
+const server = app.listen("8000", () => {
+  console.log(`server listening on 8000`);
 });
 
 // unhandled promise rejection

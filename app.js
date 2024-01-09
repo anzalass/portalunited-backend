@@ -3,7 +3,7 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const ErrorHandler = require("./utils/ErrorHandler");
+const ErrorHandler = require("./middleware/error");
 const dotenv = require("dotenv");
 var cookieSession = require("cookie-session");
 
