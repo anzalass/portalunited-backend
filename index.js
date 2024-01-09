@@ -3,9 +3,7 @@ const connectDatabase = require("./db/Database");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 
-dotenv.config({
-  path: "././config/.env",
-});
+dotenv.config();
 
 app.use(cookieParser());
 
@@ -22,6 +20,8 @@ connectDatabase();
 const server = app.listen("8000", () => {
   console.log(`server listening on 8000`);
 });
+
+console.log(process.env.SMPT_MAIL);
 
 // unhandled promise rejection
 process.on("unhandled promise rejection", () => {

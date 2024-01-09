@@ -7,9 +7,7 @@ const ErrorHandler = require("./middleware/error");
 const dotenv = require("dotenv");
 var cookieSession = require("cookie-session");
 
-dotenv.config({
-  path: "././config/.env",
-});
+dotenv.config();
 
 // app.use(cookieSession());
 
