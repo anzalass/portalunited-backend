@@ -105,6 +105,8 @@ router.get(
       res.cookie("token_blog", null, {
         expires: new Date(Date.now()),
         httpOnly: true,
+        sameSite: 'None', // Adjust based on your requirements and SSL setup
+        secure: true,     // Make sure to set this to true if using HTTPS
       });
       res.status(201).json({
         success: true,
