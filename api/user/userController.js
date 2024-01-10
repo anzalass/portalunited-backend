@@ -140,7 +140,7 @@ router.post(
       };
 
       const forgotPassword = createTokenEditPassword(user);
-      const resetPassword = `http://localhost:5173/reset/?token=${forgotPassword}`;
+      const resetPassword = `https://portalunited.vercel.app/reset/?token=${forgotPassword}`;
 
       try {
         await sendMail({
